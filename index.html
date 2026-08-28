@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PaperStich</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="settings-area">
+          <select id="language-select" class="language-select" aria-label="言語" data-i18n-attr="aria-label:language">
+            <option value="ja" data-i18n="japanese">日本語</option>
+            <option value="en" data-i18n="english">English</option>
+          </select>
+        </div>
+      </header>
+      <div class="workspace-layout">
+        <div class="main-column">
+          <section class="map-section panel">
+            <div class="map-heading">
+              <button id="refresh-displays" class="secondary-button" type="button" data-i18n="refreshDisplays">モニターを再検出</button>
+              <div class="map-toolbar">
+                <label class="control-field">
+                  <select id="fit-mode" disabled aria-label="表示方法" data-i18n-attr="aria-label:displayMode">
+                    <option value="fill" data-i18n="fitFill">画面いっぱい（切り抜き）</option>
+                    <option value="fit" data-i18n="fitFit">全体を表示（余白あり）</option>
+                    <option value="center" data-i18n="fitCenter">中央に原寸表示</option>
+                  </select>
+                </label>
+                <label class="control-field preview-height-control" for="preview-height">
+                  <output id="preview-height-value" for="preview-height" hidden>420px</output>
+                  <input id="preview-height" type="range" min="220" max="700" step="10" value="420" aria-label="プレビュー高さ" data-i18n-attr="aria-label:previewHeight" />
+                </label>
+                <button id="apply-wallpaper" class="primary-button" type="button" data-i18n="applyWallpaper">壁紙を適用</button>
+              </div>
+            </div>
+            <div class="canvas-shell">
+              <canvas id="monitor-canvas" aria-label="モニター配置。クリックして選択" data-i18n-attr="aria-label:canvasLabel"></canvas>
+            </div>
+          </section>
+
+        </div>
+
+        <aside class="library-section panel">
+          <div class="section-heading library-heading">
+            <div class="section-title">
+              <h2><span data-i18n="imageLibrary">画像ライブラリ</span> <span id="image-count" class="count">0枚</span></h2>
+              <p id="library-hint" data-i18n="libraryHint">画像ディレクトリを追加すると、その中の画像を一覧表示します</p>
+            </div>
+            <div class="library-toolbar">
+              <label class="control-field thumbnail-controls" for="thumbnail-size">
+              <output id="thumbnail-size-value" for="thumbnail-size" hidden>160px</output>
+              <input id="thumbnail-size" type="range" min="100" max="240" step="10" value="160" aria-label="サムネイルサイズ" data-i18n-attr="aria-label:thumbnailSize" />
+              </label>
+              <button id="add-folder" class="secondary-button" type="button" data-i18n="addDirectory">画像ディレクトリを追加</button>
+            </div>
+          </div>
+          <ul id="directory-list" class="directory-list" aria-label="保存済み画像ディレクトリ" data-i18n-attr="aria-label:directoryListLabel"></ul>
+          <div id="gallery" class="gallery"></div>
+        </aside>
+      </div>
+
+      <p id="status" class="status" role="status"></p>
+    </main>
+    <div id="directory-loading-overlay" class="directory-loading-overlay" hidden aria-live="polite">
+      <div class="directory-loading-message" data-i18n="loadingDirectories">画像を読み込んでいます…</div>
+    </div>
+  </body>
+</html>
