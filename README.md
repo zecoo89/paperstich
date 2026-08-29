@@ -1,5 +1,11 @@
 # PaperStich
 
+## About PaperStich
+
+PaperStich combines the images for each monitor into a single wallpaper that matches your complete desktop layout, then applies it as your desktop background.
+
+Choose an image for each monitor, preview the complete layout, and apply the wallpaper with one click. It is useful for displaying a panoramic image across multiple monitors or a different image on each display.
+
 Canvas-based multi-monitor wallpaper application for Linux, built with Tauri, TypeScript, and Rust.
 
 [日本語版](README.ja.md)
@@ -59,6 +65,16 @@ To run the desktop application:
 ```sh
 npm run tauri dev
 ```
+
+### Build the application
+
+To build a distributable application, run:
+
+```sh
+npm run tauri build
+```
+
+The built package is generated under `src-tauri/target/release/bundle/`. The current configuration generates a Debian package (`.deb`).
 
 Build the frontend and run the Rust checks:
 
